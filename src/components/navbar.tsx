@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 
 const navLinks = [
+  { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   // { label: 'Labs', href: '#labs' },
   { label: 'Work', href: '#work' },
