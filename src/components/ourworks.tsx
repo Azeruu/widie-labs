@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import FadeIn from './FadeIn'
 
 // ─── Easy to change later ───────────────────────────
 const GITHUB_USERNAME = 'azeruu'
@@ -90,11 +91,11 @@ export default function OurWorks() {
     e.preventDefault()
     const x = e.pageX - scrollRef.current.offsetLeft
     const walk = (x - startX) * 2 // Scroll speed multiplier
-    
+
     if (Math.abs(walk) > 5) {
       setIsDragging(true)
     }
-    
+
     scrollRef.current.scrollLeft = scrollLeft - walk
   }
 
@@ -124,15 +125,21 @@ export default function OurWorks() {
     <section id="work" className="relative py-24 overflow-hidden">
       {/* Section header */}
       <div className="max-w-7xl mx-auto px-8 mb-14 text-center">
-        <span className="inline-block px-4 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium tracking-widest uppercase mb-4">
-          Our Works
-        </span>
-        <h2 className="bitcount-grid-double-utama text-4xl md:text-5xl text-white mb-4 bg-gradient-to-r from-white via-violet-200 to-indigo-400 bg-clip-text text-transparent">
-          What We've Built
-        </h2>
-        <p className="text-white/50 text-base max-w-lg mx-auto leading-relaxed">
-          A collection of live projects and experiments crafted at Widie Labs.
-        </p>
+        <FadeIn delay={100}>
+          <span className="inline-block px-4 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium tracking-widest uppercase mb-4">
+            Our Works
+          </span>
+        </FadeIn>
+        <FadeIn delay={200}>
+          <h2 className="bitcount-grid-double-utama text-4xl md:text-5xl text-white mb-4 bg-gradient-to-r from-white via-violet-200 to-indigo-400 bg-clip-text text-transparent">
+            What We've Built
+          </h2>
+        </FadeIn>
+        <FadeIn delay={300}>
+          <p className="text-white/50 text-base max-w-lg mx-auto leading-relaxed">
+            A collection of live projects and experiments crafted at Widie Labs.
+          </p>
+        </FadeIn>
       </div>
 
       {loading && (
@@ -149,7 +156,7 @@ export default function OurWorks() {
       )}
 
       {!loading && !error && repos.length > 0 && (
-        <>
+        <FadeIn delay={400}>
           {/* Fade edges */}
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-black/60 to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-black/60 to-transparent" />
@@ -168,8 +175,8 @@ export default function OurWorks() {
             <div className="flex w-max gap-6 animate-marquee-left has-[:hover]:[animation-play-state:paused]">
               {/* Double the list for seamless infinite loop */}
               {[...repos, ...repos].map((repo, idx) => (
-                <div 
-                  key={`${repo.id}-${idx}`} 
+                <div
+                  key={`${repo.id}-${idx}`}
                   className="snap-center shrink-0"
                   style={{ pointerEvents: isDragging ? 'none' : 'auto' }}
                 >
@@ -178,7 +185,7 @@ export default function OurWorks() {
               ))}
             </div>
           </div>
-        </>
+        </FadeIn>
       )}
 
       {!loading && !error && repos.length === 0 && (
@@ -189,19 +196,21 @@ export default function OurWorks() {
 
       {/* Github profile link */}
       {!loading && !error && (
-        <div className="mt-12 text-center">
-          <a
-            href={`https://github.com/${GITHUB_USERNAME}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/15 bg-white/5 text-white/60 text-sm font-medium hover:border-violet-500/50 hover:text-white hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
-          >
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
-            </svg>
-            View all on GitHub
-          </a>
-        </div>
+        <FadeIn delay={500}>
+          <div className="mt-12 text-center">
+            <a
+              href={`https://github.com/${GITHUB_USERNAME}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/15 bg-white/5 text-white/60 text-sm font-medium hover:border-violet-500/50 hover:text-white hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+              </svg>
+              View all on GitHub
+            </a>
+          </div>
+        </FadeIn>
       )}
     </section>
   )

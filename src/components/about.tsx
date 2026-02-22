@@ -1,3 +1,5 @@
+import FadeIn from './FadeIn'
+
 export default function About() {
     return (
         <section id="about"
@@ -11,42 +13,51 @@ export default function About() {
                 />
 
                 <div className="relative z-10">
-                    <span className="inline-block px-4 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium tracking-widest uppercase mb-8">
-                        About Us
-                    </span>
-                    <h2 className="bitcount-grid-double-utama text-3xl md:text-5xl bg-gradient-to-r from-white via-violet-200 to-indigo-400 bg-clip-text text-transparent mb-8">
-                        Pioneering the Future of Digital Experiences
-                    </h2>
+                    <FadeIn delay={100}>
+                        <span className="inline-block px-4 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium tracking-widest uppercase mb-8">
+                            About Us
+                        </span>
+                    </FadeIn>
 
-                    <div className="flex flex-col gap-6 text-white/70 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-                        <p>
-                            At Widie Labs, we don't just build websites; we craft immersive digital landscapes.
-                            Our mission is to bridge the gap between imagination and reality through cutting-edge design and flawless engineering.
-                        </p>
-                        <p>
-                            We believe that every pixel tells a story and every interaction is an opportunity to delight.
-                            By blending art with technology, we experiment with bold new ideas that push the boundaries of what's possible on the web.
-                        </p>
-                    </div>
+                    <FadeIn delay={200}>
+                        <h2 className="bitcount-grid-double-utama text-3xl md:text-5xl bg-gradient-to-r from-white via-violet-200 to-indigo-400 bg-clip-text text-transparent mb-8">
+                            Pioneering the Future of Digital Experiences
+                        </h2>
+                    </FadeIn>
 
-                    <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-16">
-                        <div className="flex flex-col items-center gap-2">
-                            <span className="text-4xl font-bold text-white">50+</span>
-                            <span className="text-white/50 text-sm uppercase tracking-wider">Projects</span>
+                    <FadeIn delay={300}>
+                        <div className="flex flex-col gap-6 text-white/70 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+                            <p>
+                                At Widie Labs, we don't just build websites; we craft immersive digital landscapes.
+                                Our mission is to bridge the gap between imagination and reality through cutting-edge design and flawless engineering.
+                            </p>
+                            <p>
+                                We believe that every pixel tells a story and every interaction is an opportunity to delight.
+                                By blending art with technology, we experiment with bold new ideas that push the boundaries of what's possible on the web.
+                            </p>
                         </div>
-                        <div className="flex flex-col items-center gap-2">
-                            <span className="text-4xl font-bold text-white">99%</span>
-                            <span className="text-white/50 text-sm uppercase tracking-wider">Client Satisfaction</span>
+                    </FadeIn>
+
+                    <FadeIn delay={400}>
+                        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-16">
+                            <div className="flex flex-col items-center gap-2">
+                                <span className="text-4xl font-bold text-white">50+</span>
+                                <span className="text-white/50 text-sm uppercase tracking-wider">Projects</span>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <span className="text-4xl font-bold text-white">99%</span>
+                                <span className="text-white/50 text-sm uppercase tracking-wider">Client Satisfaction</span>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <span className="text-4xl font-bold text-white">24/7</span>
+                                <span className="text-white/50 text-sm uppercase tracking-wider">Support</span>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <span className="text-4xl font-bold text-white">∞</span>
+                                <span className="text-white/50 text-sm uppercase tracking-wider">Possibilities</span>
+                            </div>
                         </div>
-                        <div className="flex flex-col items-center gap-2">
-                            <span className="text-4xl font-bold text-white">24/7</span>
-                            <span className="text-white/50 text-sm uppercase tracking-wider">Support</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-2">
-                            <span className="text-4xl font-bold text-white">∞</span>
-                            <span className="text-white/50 text-sm uppercase tracking-wider">Possibilities</span>
-                        </div>
-                    </div>
+                    </FadeIn>
                 </div>
             </div>
         </section>

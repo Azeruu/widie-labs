@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Menu, X } from 'lucide-react'
 import { Button } from './ui/button'
 
 const navLinks = [
@@ -11,6 +12,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -64,15 +66,9 @@ export default function Navbar() {
           WIDIE.LABS
         </a>
 
-        {/* Nav links */}
+        {/* Desktop Nav links */}
         <ul
-          style={{
-            display: 'flex',
-            gap: '2.5rem',
-            listStyle: 'none',
-            margin: 0,
-            padding: 0,
-          }}
+          className="hidden md:flex gap-10 list-none m-0 p-0"
         >
           {navLinks.map((link) => (
             <li key={link.href}>
@@ -99,32 +95,66 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <Button
-          style={{
-            background: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
-            border: 'none',
-            color: 'white',
-            padding: '0.5rem 1.25rem',
-            borderRadius: '9999px',
-            fontSize: '0.875rem',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'opacity 0.2s ease, transform 0.2s ease',
-            boxShadow: '0 0 20px rgba(124,58,237,0.4)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.opacity = '0.85'
-            e.currentTarget.style.transform = 'scale(1.04)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.opacity = '1'
-            e.currentTarget.style.transform = 'scale(1)'
-          }}
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
+          <Button
+            style={{
+              background: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
+              border: 'none',
+              color: 'white',
+              padding: '0.5rem 1.25rem',
+              borderRadius: '9999px',
+              fontSize: '0.875rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'opacity 0.2s ease, transform 0.2s ease',
+              boxShadow: '0 0 20px rgba(124,58,237,0.4)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = '0.85'
+              e.currentTarget.style.transform = 'scale(1.04)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = '1'
+              e.currentTarget.style.transform = 'scale(1)'
+            }}
+          >
+            Get Started
+          </Button>
+        </div>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          Get Started
-        </Button>
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="w-65 md:hidden absolute top-[68px] h-[100vh] right-0 bg-transparent backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-6 shadow-2xl transform transition-transform duration-300 ease-in-out translate-x-0 translate-y-0">
+          <ul className="flex flex-col gap-4 list-none m-0 p-0">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="block text-white/70 hover:text-white text-base font-medium transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <Button
+            className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:opacity-90 transition-opacity text-white rounded-full py-6 font-semibold shadow-[0_0_20px_rgba(124,58,237,0.4)]"
+          >
+            Get Started
+          </Button>
+        </div>
+      )}
     </header>
   )
 }
